@@ -1,4 +1,5 @@
 const APIFeatures = require("../utils/apiFeatures");
+const catchAsync = require("../utils/catchAsync");
 
 exports.getOne = (Model) =>
   catchAsync(async (req, res, next) => {
