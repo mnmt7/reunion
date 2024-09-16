@@ -58,3 +58,18 @@ exports.register = catchAsync(async (req, res, next) => {
 
   createAndSendToken(user, 201, res);
 });
+
+exports.login = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email }).select(
+    "+password"
+  );
+
+  if (
+    !user ||
+    !(await user.isCorrectPassword(req.body.password, user.password))
+  ) {
+    return next(new AppError("Email or password is wrong", 401));
+  }
+
+  createAndSendToken(user, 200, res);
+});

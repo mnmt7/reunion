@@ -5,7 +5,9 @@ function App() {
 
   useEffect(() => {
     async function fetchProperties() {
-      const res = await fetch("");
+      const res = await fetch(
+        "https://reunion-be.vercel.app/api/list-properties"
+      );
       const data = await res.json();
       setProperties(data);
     }

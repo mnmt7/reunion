@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("api/property", propertyRouter);
 
 app.get("api/list-properties", propertyController.getAllProperty);
-app.post("api/login");
-app.post("api/signup");
+app.post("api/login", authController.login);
+app.post("api/signup", authController.register);
 
 module.exports = app;
