@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useState([
+    {
+      name: "property 1",
+      price: "Rs 10000",
+    },
+  ]);
 
   useEffect(() => {
     async function fetchProperties() {
       const res = await fetch(
         "https://reunion-be.vercel.app/api/list-properties"
-      );
+      
       const data = await res.json();
       setProperties(data);
     }
